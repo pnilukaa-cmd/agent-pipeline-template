@@ -77,3 +77,12 @@ These are the kinds of things that eat real time if you don't expect them:
 ## What "done" means for this whole cycle
 
 A cycle isn't complete when code is merged — it's complete when: the real toolchain has been run against the merged state with output you've actually seen (not assumed), the retrospective phase has run (even if its answer is "no change needed"), and — if the ask was to get something onto a real device — that install has actually been attempted, with an honest report of whether it succeeded, not just a build artifact sitting unverified.
+
+## Post-release phase (optional — Growth and Insights, only after something is actually live)
+
+Two more agents, Growth and Insights, exist for what happens *after* the 8-stage cycle above ships — they are not part of the standard sequence and should not be spawned as part of a normal feature/release cycle. Their defining gate is the same for both: **something has to actually be live for real users** — a real device install a tester can use, or a live URL — not a merged build sitting in a repo. Don't spawn either one before that's true; there's nothing for them to work from yet.
+
+- **Growth**, once something is live (or pre-launch if the human explicitly wants an early positioning/channel gut-check): turns the shipped product's real, verified capabilities into store-listing copy, landing-page copy, and distribution-channel picks. Feed it the current product brief, requirements, and QA results so its copy is grounded in what's actually true, not the original pitch.
+- **Insights**, once something is live with real users: defines what to measure (respecting whatever privacy/architecture constraints the product already locked — never assume telemetry is free to add) and mines whatever feedback channels exist (reviews, a survey, support messages) into structured findings for product-manager and researcher. Unlike a one-time pipeline stage, Insights is meant to be re-invoked on a recurring cadence as more real-world signal accumulates, not run once and done.
+
+Both hand findings to product-manager, the same as every other agent — neither one decides scope, roadmap, or ships anything itself.
