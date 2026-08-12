@@ -1,6 +1,6 @@
 ---
 name: new-app
-description: Bootstrap a brand-new app project from this pipeline template — copies the six team agent definitions, the retrospective agent, and the orchestration skill into a fresh project repo, records where the template came from, and kicks off the researcher agent with the new app's one-line pitch. Use when the user wants to start an entirely new app using this team pattern (e.g. "/new-app <name> <pitch>").
+description: Bootstrap a brand-new app project from this pipeline template — copies all nine team agent definitions (the six pre-launch roles, retrospective, and the post-release-only growth/insights pair) and the orchestration skill into a fresh project repo, records where the template came from, and kicks off the researcher agent with the new app's one-line pitch. Use when the user wants to start an entirely new app using this team pattern (e.g. "/new-app <name> <pitch>").
 ---
 
 # /new-app — bootstrap a new project from this template
@@ -22,7 +22,7 @@ If the user invokes this with just a name and no pitch, ask for a one-line pitch
 2. **Create the new project directory**, sibling to (not inside) this template repo, named after the project (e.g. `../grocery-list/`).
 
 3. **Copy the team into the new project:**
-   - `.claude/agents/*.md` (all seven: researcher, product-manager, ux-designer, business-analyst, developer, qa-tester, retrospective) — copy verbatim, don't edit them. They're already written generically; app-specific context belongs in the new project's own `CLAUDE.md`, not baked into the agent files.
+   - `.claude/agents/*.md` (all nine: researcher, product-manager, ux-designer, business-analyst, developer, qa-tester, retrospective, growth, insights) — copy verbatim, don't edit them. They're already written generically; app-specific context belongs in the new project's own `CLAUDE.md`, not baked into the agent files. Note that `growth` and `insights` are post-release-only — see the `pipeline` skill's "Post-release phase" section — so don't spawn them as part of this bootstrap step or the initial pipeline cycle; they're copied in now so they're ready once something actually ships.
    - `.claude/skills/pipeline/SKILL.md` and `.claude/skills/new-app/SKILL.md` — copy verbatim, so the new project can also bootstrap *its own* future sibling projects if it's ever used as a template in turn.
 
 4. **Write the new project's root `CLAUDE.md`**, filling in the parameterized parts — this is where all the app-specific context goes that the template's agent files deliberately don't contain:
