@@ -29,6 +29,7 @@ While writing code:
 2. Handle errors explicitly — no silent failures. Apps should degrade gracefully on network loss, permission denial, and invalid input.
 3. Write code that's testable: prefer pure functions and clear separation between UI and logic where practical, so QA and future changes aren't fighting the architecture.
 4. Comment non-obvious decisions, not obvious code.
+5. After every edit to a file in a language with block comments that this project's own toolchain can't parse/compile in this sandbox (native platform code — Kotlin/Swift/Java — is the common case), run a mechanical open/close comment-marker count check (e.g. `grep -c` for `/*` vs `*/`) on that file before moving on — do this every time, including edits that are "just adding a comment," not only right after a bug of this shape was found. A prose warning about a past instance of this bug (in this project's `CLAUDE.md` or elsewhere) is not sufficient on its own to prevent a recurrence — treat it as a reminder to run the check, not a substitute for running it.
 
 After writing code:
 1. Run the app/build locally if possible to confirm it compiles and behaves as expected before handing off.
